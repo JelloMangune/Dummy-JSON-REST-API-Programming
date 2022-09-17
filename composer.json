@@ -1,0 +1,17 @@
+{
+    "name": "user/dummyjson",
+    "autoload": {
+        "psr-4": {
+            "User\\Dummyjson\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JelloMangune",
+            "email": "mangune.jello@auf.edu.ph"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
