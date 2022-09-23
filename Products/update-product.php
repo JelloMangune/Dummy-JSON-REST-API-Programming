@@ -1,5 +1,5 @@
 <?php
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 
 use GuzzleHttp\Client;
 
@@ -7,18 +7,24 @@ $client = new Client([
         'base_uri' => 'https://dummyjson.com/'
 ]);
 
+$product_id = $_GET['product_id'] ?? null;
 
 $data = array(
-    'title'    => 'added product',
-    'description' => 'sample description'
-  );
+  'title'    => 'Updated Product',
+  'description' => 'Updated description',
+  'price' => 200,
+  'brand' => 'Brand Y',
+  'category' => 'Dishwashing Soap',
+  'thumbnail' => 'thumbnail2.png'
+);
 
 $options = [
-      'method'  => 'POST',
+      'method'  => 'PUT',
       'headers'=>  ['Content-Type' => 'application/json'],
       'body' => json_encode($data)]
 ;
-$response = $client->post('products/add', $options);
+
+$response = $client->put('products/' . $product_id, $options);
 $code = $response->getStatusCode();
 $body = $response->getBody();
 $decoded_response = json_decode($body);
